@@ -1,0 +1,50 @@
+% Facts
+symptom(fever).
+symptom(cough).
+symptom(headache).
+symptom(fatigue).
+symptom(rash).
+
+condition(common_cold).
+condition(flu).
+condition(measles).
+condition(allergy).
+condition(unknown).
+
+% Rules
+% Rule 1: If a person has a fever and a cough, they might have the flu.
+diagnosis(Person, flu) :-
+    has_symptom(Person, fever),
+    has_symptom(Person, cough).
+
+% Rule 2: If a person has a rash, they might have measles.
+diagnosis(Person, measles) :-
+    has_symptom(Person, rash).
+
+% Rule 3: If a person has a headache and fatigue, they might have the common cold.
+diagnosis(Person, common_cold) :-
+    has_symptom(Person, headache),
+    has_symptom(Person, fatigue).
+
+% Rule 4: If a person has a cough and fatigue, it could be due to allergy.
+diagnosis(Person, allergy) :-
+    has_symptom(Person, cough),
+    has_symptom(Person, fatigue).
+
+% Rule 5: If the symptoms are unclear, the condition is unknown.
+diagnosis(_, unknown).
+
+% Rule 6: A person has a symptom if they report it.
+has_symptom(Person, Symptom) :-
+    report_symptom(Person, Symptom).
+
+% Example usage:
+% Query: What condition does John have?
+% Answer: Run the query "diagnosis(john, X)." to get the possible condition X.
+
+% Example query:
+% diagnosis(john, X).
+
+% Example: John reports symptoms.
+report_symptom(john, fever).
+report_symptom(john, cough).

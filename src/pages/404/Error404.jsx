@@ -1,5 +1,6 @@
 import React from "react";
 import "./error404.scss";
+
 const Error404 = () => {
 	return <div>Error404</div>;
 };

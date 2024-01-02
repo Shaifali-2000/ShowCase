@@ -1,11 +1,14 @@
 import axios from "axios";
+
 const BASE_URL = "https://api.themoviedb.org/3";
-const TOKEN =
-	"eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlNjYxMmQzZDNkNzNlMGZmMjk5YTZjZjBkYTI3Yzk1MiIsInN1YiI6IjY1Nzc1NDFiZWM4YTQzMDBmZDdkYzkyOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.rR0Iva9J0bMbkPUnn5sJgnLCGk4lpVLu8dW71gUAuGI";
+
+const TOKEN = import.meta.env.VITE_APP_TOKEN;
+
 const headers = {
-	authorization: "bearer " + TOKEN,
+	authorization: "Bearer " + TOKEN,
 };
-const fetchDataFromApi = async (url, params) => {
+
+const fetchDataFromAPI = async (url, params) => {
 	try {
 		const { data } = await axios.get(BASE_URL + url, {
 			headers: headers,
@@ -18,4 +21,4 @@ const fetchDataFromApi = async (url, params) => {
 	}
 };
 
-export default fetchDataFromApi;
+export default fetchDataFromAPI;
